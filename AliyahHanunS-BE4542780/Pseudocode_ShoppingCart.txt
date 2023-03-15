@@ -1,0 +1,47 @@
+PROGRAM shoppingCart
+
+START
+
+DISPLAY login page
+
+IF have an account
+	CALL Login()
+ELSE 
+	CALL register()
+	CALL login()
+ENDIF
+
+SHOW "menuItem"
+
+WHILE want to add order 
+    READ INPUT "item"
+    ADD "itemToCart"
+    IF want to continue shopping
+        READ "item"
+        IF item alredy in the cart 
+            INCREMENT item in the cart
+        ELSE item is not in the cart
+            ADD "itemTocart'"
+        END IF
+    exit WHILE
+END WHILE
+
+STORE "total" = 0
+FOR SHOPPING IN "item":
+    "total" += "priceOfItems"
+
+SHOW "checkout"
+READ INPUT "address"
+READ INPUT "paymentSuccess" = FALSE
+
+WHILE "paymentSuccess" IS FALSE:
+    SHOW "listPaymentMethod"
+    READ INPUT "choicePaymentMethod"
+    READ INPUT "balance"
+    IF "balance" >= "total":
+        DELIVER "items"
+        PRINT "receipt"
+        "paymentSuccess" = TRUE
+END WHILE
+
+FINISH    
